@@ -1,4 +1,5 @@
 application-jwt.properties
+classpath:application-db.properties
 HELP.md
 .gradle
 build/
