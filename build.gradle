@@ -43,6 +43,8 @@ dependencies {
 	implementation 'io.swagger:swagger-annotations:1.6.8'
 	implementation 'io.swagger:swagger-models:1.6.8'
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
+	annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
