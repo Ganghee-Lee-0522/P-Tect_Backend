@@ -22,17 +22,16 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "member_name")
     private String name;
 
-    @Column(unique = true)
+    @Column(unique = true, name = "member_phone")
     private String phone;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "member_pw")
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Role role;
 
     @Builder
