@@ -164,7 +164,7 @@ public class SecurityConfig {
                 // 조건 별로 요청 허용/제한 설정
                 .authorizeRequests()
                 // 회원가입과 로그인은 모두 승인
-                .antMatchers("/signup/**", "/login/**", "/h2-console", "/h2-console/**").permitAll()
+                .antMatchers("/signup/**", "/login/**", "/h2-console", "/h2-console/**", "/").permitAll()
                 //.antMatchers("/**", "/h2-console/**").permitAll()
                 // /OWNER로 시작하는 요청은 OWNER 권한이 있는 유저에게만 허용
                 .antMatchers("/owner/**").hasRole("OWNER")
