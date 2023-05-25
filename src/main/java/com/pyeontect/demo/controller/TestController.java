@@ -19,7 +19,7 @@ public class TestController {
         this.resourceLoader = resourceLoader;
     }
 
-    @PostMapping("/sound")
+    @GetMapping("/sound")
     public Resource sound() {
         // HTML 파일의 경로를 지정하여 Resource 로드
         Resource resource = resourceLoader.getResource("classpath:static/soundlogic.html");
@@ -28,7 +28,7 @@ public class TestController {
         return resource;
     }
 
-    @PostMapping("/report")
+    @GetMapping("/report")
     public Resource report() {
         // HTML 파일의 경로를 지정하여 Resource 로드
         Resource resource = resourceLoader.getResource("classpath:static/reportlogic.html");
