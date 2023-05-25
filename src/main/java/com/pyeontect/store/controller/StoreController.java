@@ -6,10 +6,7 @@ import com.pyeontect.store.service.StoreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -18,13 +15,16 @@ public class StoreController {
 
     private final StoreService storeService;
 
+    // 점포 등록
     @PostMapping("/register")
     public ResponseEntity<ResponseDto<Object>> registerStore(@RequestBody StoreRequestDto storeRequestDto) throws Exception {
         try {
-            storeService.register(storeRequestDto);
+            if (storeService.register(storeRequestDto) == false) {
+                return ResponseEntity.ok().body(ResponseDto.response(HttpStatus.valueOf(HttpStatus.OK.value()), "Registration request completed."));
+            }
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(ResponseDto.response(HttpStatus.valueOf(HttpStatus.EXPECTATION_FAILED.value()), e.getMessage()));
         }
-        return ResponseEntity.ok().body(ResponseDto.response(HttpStatus.valueOf(HttpStatus.OK.value()), "Register store successfully."));
+        return ResponseEntity.ok().body(ResponseDto.response(HttpStatus.valueOf(HttpStatus.CREATED.value()), "Register store successfully."));
     }
 }

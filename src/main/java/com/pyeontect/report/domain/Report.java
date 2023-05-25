@@ -18,20 +18,20 @@ public class Report {
     @Column(name = "report_id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "store_id")
-    //@Column(nullable = false)
-    private Store store;
-
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    //@Column(nullable = false)
-    private Member member;
-
     @Column(nullable = false, name = "report_type")
     private String reportType;
 
     @Column(name = "report_img")
     private String reportImg;
+
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    //@Column(name = "report_store")
+    private Store store;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    //@Column(name = "report_member")
+    private Member member;
 
 }

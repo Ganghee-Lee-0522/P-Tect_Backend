@@ -13,27 +13,31 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "TABLE_EMPLOYMENT")
-public class Employment {
+@Table(name = "TABLE_REQUEST")
+public class Request {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employment_id")
+    @Column(name = "request_id")
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "store_id")
-    //@Column(nullable = false)
-    private Store store;
 
     @OneToOne
     @JoinColumn(name = "member_id")
     //@Column(nullable = false)
     private Member member;
 
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    //@Column(nullable = false)
+    private Store store;
+
+    @Column(name = "owner")
+    private String owner;
+
     @Builder
-    public Employment(Store store, Member member) {
-        this.store = store;
+    public Request(Member member, Store store) {
         this.member = member;
+        this.store = store;
     }
 }
+

@@ -1,5 +1,6 @@
 package com.pyeontect.store.domain;
 
+import com.pyeontect.member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,6 +26,11 @@ public class Store {
 
     @Column(nullable = false, name = "store_subscribe")
     private Boolean subscribe;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    //@Column(name = "store_owner")
+    private Member storeOwner;
 
     @Builder
     public Store(String storeSite, Boolean subscribe) {

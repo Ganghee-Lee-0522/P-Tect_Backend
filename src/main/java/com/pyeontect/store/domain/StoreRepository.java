@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface StoreRepository extends JpaRepository<Store, Long> {
     Optional<Store> findById(Long id);
+    Optional<Store> findByStoreSite(String storeSite);
 }
